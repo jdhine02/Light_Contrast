@@ -1,0 +1,57 @@
+{
+    "BlockType": "text",
+    "Source": "<position>",
+    "Width": 65,
+    "Height": 68,
+    "BackgroundImage": "position_bg.png",
+    "FontName": "{FontNameDefault}",
+    "FontSize": 40,
+    "Foreground": "WhiteText",
+    "TextOptions": {
+        "HorizontalAlignment": "Center"    
+    },
+    "Triggers" : [ 
+        {
+            "Condition" : "{Item.Position, Converter=NumberEquals, Parameter=1}",
+            "Setters" :
+            [
+                {
+                    "Property" : "Foreground",
+                    "Value" : "{P1Foreground}"
+                }
+            ]
+        },
+        {
+            "Condition" : "{Item.Position, Converter=NumberEquals, Parameter=2}",
+            "Setters" :
+            [
+                {
+                    "Property" : "Foreground",
+                    "Value" : "{P2Foreground}"
+                }
+            ]
+        },
+        {
+            "Condition" : "{Item.Position, Converter=NumberEquals, Parameter=3}",
+            "Setters" :
+            [
+                {
+                    "Property" : "Foreground",
+                    "Value" : "{P3Foreground}"
+                }
+            ]
+        },
+        {
+            "Condition" : "{Item.IntervalRace, Converter=StringEquals, Parameter=DNF}",
+            "Setters" :
+            [
+                {
+                    "Property" : "Foreground",
+                    "Value" : "{DNFText}"
+                }
+            ]
+        },
+        
+    ]
+   
+}
