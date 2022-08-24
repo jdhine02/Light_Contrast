@@ -1,0 +1,9 @@
+{
+  "ShowPenaltyPointsInStandings": true,
+  "ShowWinnerInCalendar": true,
+  "ShowEventDescriptionInCalendar": true,
+  "RenderBroadcaster": true,
+  "RenderLineupBG": true,
+  "FirstCustomStickerName": "BROADCAST/COMMENTATOR",
+  "FirstCustomStickerValue": "Hines J/Madrolla"
+}
