@@ -1,0 +1,48 @@
+{
+    "BlockRoot": {
+        "Name": "mainStack",
+        "BlockType": "stack",
+        "Margin": "{MarginRoot}",
+        
+        "Orientation": "Vertical",
+        "Items": [
+            //header block
+            {               
+                "BlockType": "component",
+                "ComponentName": "lineup_block",
+            },
+
+                 //table
+            {
+                "Name": "mainTable",
+                "BlockType": "table",
+                "Margin": "{MarginTable}",
+                "TableOptions": {
+                    "ItemsSource": "{Lineups.Lineups}",
+                    "RowSpacing": 16,
+                    "ColSpacing": 8,
+                    "HeaderTemplate": {
+                        "BlockType": "text",
+                        "MarginBottom": 8,
+                        "FontSize": "22",                        
+                        "TextOptionsExtern": "tableColumnHeader",
+                        "Foreground" : "{ForegroundRed}",
+                        "TextAlignment" : "Left",
+                        "MarginLeft" : -10
+                        //"Width": 100
+                    },
+                    "Columns": [
+                        {
+                            "Header": "",                           
+                            "Template": {
+                                "BlockType" : "component",
+                                "ComponentName" : "lineup_line_cell",
+                                "MarginLeft" : 25,
+                            }
+                        },
+                    ]
+                }
+            }
+        ]
+    }
+}

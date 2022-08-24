@@ -1,0 +1,315 @@
+{
+    "BlockRoot": {
+        "Name": "mainStack",
+        "BlockType": "stack",
+        "Margin": "{MarginRoot}",
+        
+        "Orientation": "Vertical",
+        "Items": [
+            //header block
+            {               
+                "BlockType": "component",
+                "ComponentName": "header_block_stats",      
+            },
+
+            //separator
+            {
+                "Name": "separator",
+                "BlockType": "image",
+                "MarginTop": 16,
+                "MarginLeft": 4,
+                "MarginRight": 4,
+                "MarginBottom": 24,
+                "Width": "*",
+                "Source": "separator.png"
+            },
+
+            //table
+            {
+                "Name": "mainTable",
+                "BlockType": "table",
+                "Margin" : "{MarginTable}",
+                "MarginRight" : 200,
+                "TableOptions": {
+                    "ItemsSource": "{Standings.Drivers}",
+                    "RowSpacing": 16,
+                    "ColSpacing": 4,
+                    "HeaderTemplate": {
+                        "BlockType": "text",
+                        "MarginBottom": 8,
+                        "TextOptionsExtern" : "tableColumnHeader"
+                    },
+                    "Columns": [
+                        //position
+                        {
+                            "Header": "",
+                            "Template": {
+                                "BlockType" : "component",                                
+                                "ComponentName" : "position_cell",
+                                "ComponentOptions" :{
+                                    "Vars" :{
+                                        "position" : "{Item.Position}"
+                                    }
+                                }                           
+                            }
+                        },
+
+                        //driver line
+                        {
+                            "Header": "",
+                            "WidthStretch" : true,                            
+                            "Template": {
+                                "BlockType" : "component",
+                                "ComponentName" : "driver_line_cell"   
+                            }
+                        },   
+
+                        //events
+                        {
+                            "Header" : "Total Events",
+                            "MarginLeft" : 12,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "   {Item.EventsCount, Converter=NumberZeroToEmpty}   ",                                
+                                "TextOptionsExtern" : "primaryNumber",
+                                "Foreground" : "{DNFText}"
+                            }
+                        },
+                        {
+                            "Header" : "Races Entered",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "    {Item.RacesCount, Converter=NumberZeroToEmpty}    ",                                
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "Qualies",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.QualCount, Converter=NumberZeroToEmpty}",                                
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "# of Laps",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.LapsCount, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{BlackText}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        //Points
+
+                        {
+                            "Header" : "Points",
+                            "MarginLeft" : 12,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.Points, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{WhiteTextText}",
+                                "TextOptionsExtern" : "primaryNumber",
+                                "ColorizeBackground": {
+                                    "Enabled": true,
+                                    "Color": "#FFFF00",
+                                    "BlendPercentage": 50
+                                },
+                            }
+                        },
+
+                        //Qual
+                        
+                        {
+                            "Header" : "Poles",
+                            "MarginLeft" : 12,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.CountQualP1, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{Poles}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {   
+                            "Header" : "Best Qual",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.BestPosQual, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{WhiteTextText}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        //Sprint
+                        
+                        {
+                            "Header" : "Wins",
+                            "MarginLeft" : 12,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.RaceMinor.countP1, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{Standings1stCountForeground}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "2nd",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.RaceMinor.countP2, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "#666664",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "3rd",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.RaceMinor.countP3, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{Standings3rdCountForeground}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "Best Finish",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.RaceMinor.BestPos, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{WhiteTextText}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+
+                        //podiums
+                        
+                        {
+                            "Header" : "Wins",
+                            "MarginLeft" : 12,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.CountP1, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{P1Foreground}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "2nd",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.CountP2, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{P2Foreground}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "3rd",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.CountP3, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{P3Foreground}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header" : "Best Finish",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.BestPos, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{WhiteTextText}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+
+                        //stats
+                        {
+                            "Header" : "FL",
+                            "MarginLeft" : 12,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.RaceFastestLapCount, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{FastestLap}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },
+                        {
+                            "Header": "Warnings",
+                            "Template": {
+                                "BlockType": "dock",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Items": [
+                                    {
+                                        "BlockType": "text",
+                                        "Source": "{Item.PenaltyPoints, Converter=NumberZeroToEmpty}",
+                                        "HorizontalAlignment": "Center",
+                                        "VerticalAlignment": "Center",
+                                        "TextOptions": {
+                                                        "FontName": "{FontNameDefault}",
+                                                        "FontSize": 38,
+                                                        "Foreground": "{PenaltyTimeStewardsForeground}",
+                                                        "HorizontalAlignment": "Center",
+                                                        "TextOptionsExtern" : "primaryNumber"
+                                            },
+                                        },                                        
+                                    ]
+                                },
+                            },
+                        {
+                            "Header" : "DoD",
+                            "MarginLeft" : 0,
+                            "Template":{
+                                "BlockType" : "text",
+                                "Padding": "24, 0",
+                                "Background": "{BackgroundDefault}",
+                                "Source" : "{Item.RaceDriverDayCount, Converter=NumberZeroToEmpty}",
+                                "Foreground" : "{DoD}",
+                                "TextOptionsExtern" : "primaryNumber"
+                            }
+                        },                  
+                    ]
+                }
+            }
+        ]
+    }
+}
